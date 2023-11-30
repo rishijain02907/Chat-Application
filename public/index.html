@@ -6,8 +6,17 @@
     <title>Chat App</title>
 </head>
 <body>
-    <h1>Chat Application Using Socket.IO</h1>
-    <button id="btn">CLick Me</button>
+    <h1>Chat Application Using WebSockets</h1>
+
+    <input type="text" id="roomId" placeholder="Room ID">
+    <input type="text" id="userId" placeholder="User ID">
+    <input type="text" id="newmsg" placeholder="Message">
+    <button id="btn">Send</button>
+
+    <ul id="msglist">
+
+    </ul>
+
     <script src="socket.io/socket.io.js"></script>
     <script src="script.js"></script>
 </body>

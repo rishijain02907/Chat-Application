@@ -1,13 +1,19 @@
 var socket = io();
 
 let btn = document.getElementById('btn');
+let inputMsg = document.getElementById('newmsg');
+let msgList = document.getElementById('msglist');
+
 btn.onclick = function exce() {
-    socket.emit('from_client');
+    // client sending a message
+    socket.emit('msg_send', { 
+        msg: inputMsg.value
+    })
 }
 
-socket.on('from_server', () => {
-    console.log("Collected a event from server");
-    const div = document.createElement('div');
-    div.innerText = 'New Event from Server';
-    document.body.appendChild(div);
-});
+// all clients have listner and it'll active they'll receive message
+socket.on('msg_rcvd',(data) => {
+    let limsg = document.createElement('li');
+    limsg.innerText = data.msg;
+    msgList.appendChild(limsg)
+})
